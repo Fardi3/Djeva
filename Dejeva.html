@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DJEVA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin:0;
+      font-family:'Inter', sans-serif;
+      background:white;
+      color:black;
+    }
+
+    nav {
+      display:flex;
+      justify-content:space-between;
+      padding:20px;
+      border-bottom:1px solid #eee;
+    }
+
+    nav h1 {
+      font-family:'Playfair Display';
+      letter-spacing:3px;
+    }
+
+    .hero {
+      height:80vh;
+      background:url('img1.jpg') center/cover;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-size:40px;
+      font-family:'Playfair Display';
+    }
+
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+      padding:40px;
+    }
+
+    .card {
+      text-align:center;
+    }
+
+    .card img {
+      width:100%;
+      height:350px;
+      object-fit:cover;
+    }
+
+    .card h3 {
+      margin:10px 0 5px;
+      font-weight:500;
+    }
+
+    button {
+      border:1px solid black;
+      background:none;
+      padding:8px 15px;
+      cursor:pointer;
+      margin-top:10px;
+    }
+
+    button:hover {
+      background:black;
+      color:white;
+    }
+
+    footer {
+      text-align:center;
+      padding:30px;
+      border-top:1px solid #eee;
+      font-size:14px;
+    }
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <h1>DJEVA</h1>
+  <div>@djevastudio</div>
+</nav>
+
+<div class="hero">
+  NEW COLLECTION
+</div>
+
+<div class="grid" id="products"></div>
+
+<footer>
+  Instagram: @djevastudio
+</footer>
+
+<script>
+let items = [
+  {name:"Look 1", price:40, img:"img1.jpg"},
+  {name:"Look 2", price:50, img:"img2.jpg"},
+  {name:"Look 3", price:60, img:"img3.jpg"}
+];
+
+function render(){
+  let html="";
+  items.forEach(i=>{
+    html+=`
+      <div class="card">
+        <img src="${i.img}">
+        <h3>${i.name}</h3>
+        <p>${i.price} AZN</p>
+        <button onclick="order('${i.name}',${i.price})">Order</button>
+      </div>
+    `;
+  });
+  document.getElementById("products").innerHTML=html;
+}
+
+function order(name,price){
+  let text = "Salam, DJEVA məhsulu sifariş etmək istəyirəm: " + name + " - " + price + " AZN";
+  window.open("https://wa.me/994XXXXXXXXX?text="+encodeURIComponent(text));
+}
+
+render();
+</script>
+
+</body>
+</html>
